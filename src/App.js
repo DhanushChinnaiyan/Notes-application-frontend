@@ -1,23 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes, useNavigate, useParams } from "react-router-dom";
+import "./App.css";
+import Base from "./Base/Base";
+import Body from "./Components/Body/Body";
+import AddNotes from "./Components/Notes/AddNotes";
+import UserSignup from "./Components/userEntry/UserSignup";
+import UserLogin from "./Components/userEntry/UserLogin";
+import UpdateNotes from "./Components/Notes/UpdateNotes";
+import { useEffect, useState } from "react";
+import { decodeToken } from "react-jwt";
+import { useCommonContext } from "./Base/ContextApi/context";
+import { CircularProgress } from "@mui/material";
 
 function App() {
+  const { id } = useParams()
+  const navigate = useNavigate();
+
+  const { commonStates, setCommonStates,dummy, getCatgories, getNotes } =
+    useCommonContext();
+
+  useEffect(() => {
+    
+    const userToken = localStorage.getItem("userToken");
+
+    if (!userToken) navigate("/login", { replace: true });
+
+    const user = decodeToken(userToken);
+ 
+    if (!user) {
+      localStorage.removeItem("userToken");
+      navigate("/login", { replace: true });
+    } else {
+      setCommonStates({
+        ...commonStates,
+        userToken: userToken,
+      });
+    }
+
+    getCatgories();
+    getNotes();
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route exact path="/" element={<Body />} />
+        <Route path="/add/notes" element={<AddNotes />} />
+        <Route exact path="/update/notes/:id" element={<UpdateNotes />} />
+        <Route path="/signup" element={<UserSignup />} />
+        <Route path="/login" element={<UserLogin />} />
+      </Routes>
     </div>
   );
 }

@@ -1,0 +1,11 @@
+.userEntryCard{
+    display: flex;
+    justify-content: center;
+    height: 80vh;
+    align-items: center;
+}
+
+.Link{
+    color: rgb(107, 107, 248);
+    
+}

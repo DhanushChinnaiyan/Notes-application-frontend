@@ -1,0 +1,44 @@
+.sidebar{
+    position: fixed;
+    width: calc(10% + 5vw + 100px);
+    height: calc(100vh - 80px);
+    background-color: rgb(52, 52, 82);
+    transition: all 0.5s ease-in-out;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    top:60px;
+
+}
+
+.hidden {
+    padding:0;
+    width: 0;
+    overflow: hidden; 
+  }
+
+  .sidebar:nth-child(2)>div{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 70vh;
+    overflow-y: auto;
+  }
+  
+  .sidebar:nth-child(2) > div::-webkit-scrollbar {
+    display: none;
+  }
+
+  .logoutBtn{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    
+  }
+
+  .homeBtn{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }

@@ -1,0 +1,13 @@
+.children {
+    position: absolute;
+    padding: calc(10px + 1vw);
+    left: 0;
+    transition: all 0.5s ease-in-out;
+    width: calc(100% - 20px - 2vw);
+    top:60px;
+}
+
+.childrenWithSideBar {
+    width: calc(100% - 10% - 140px - 7vw);
+    left: calc(10% + 5vw + 120px);
+}

@@ -5,6 +5,20 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* black - rgb(34, 33, 33) */
+  /* blue - rgb(52, 52, 82) */
+  /* light blue - rgb(85, 71, 163) */
+  /* purple - rgb(137, 71, 163) */
+  /* pink - rgb(250, 140, 195) */
+
+
+  /* purple - rgb(93, 23, 121)*/
+  /* light purple - rgb(170, 100, 177) */
+  /* yellow - rgb(255, 211, 158)*/
+  /* orange -rgb(252, 234, 212) */
+
+  background-color: rgb(34, 33, 33);
+  color: aliceblue;
 }
 
 code {
