@@ -10,7 +10,7 @@ const ContextProvider = ({ children }) => {
   const commonApi = "http://localhost:5000/api";
 
   const [commonStates, setCommonStates] = useState({
-    sideBarClicked: false,
+    sideBarClicked: true,
     userToken: "",
     categories: [],
     notes: [],
