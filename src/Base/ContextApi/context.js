@@ -7,7 +7,7 @@ export const useCommonContext = () => useContext(commonContext);
 
 const ContextProvider = ({ children }) => {
   const navigate = useNavigate();
-  const commonApi = "http://localhost:5000/api";
+  const commonApi = "https://notes-application-omlx.onrender.com/api";
 
   const [commonStates, setCommonStates] = useState({
     sideBarClicked: true,
