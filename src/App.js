@@ -7,10 +7,9 @@ import UserSignup from "./Components/userEntry/UserSignup";
 import UserLogin from "./Components/userEntry/UserLogin";
 import UpdateNotes from "./Components/Notes/UpdateNotes";
 import { useEffect, useState } from "react";
-import { decodeToken } from "react-jwt";
 import { useCommonContext } from "./Base/ContextApi/context";
 import { CircularProgress } from "@mui/material";
-
+import {decodeToken, isExpired} from 'react-jwt'
 function App() {
   const { id } = useParams()
   const navigate = useNavigate();
@@ -24,9 +23,8 @@ function App() {
 
     if (!userToken) navigate("/login", { replace: true });
 
-    const user = decodeToken(userToken);
- 
-    if (!user) {
+    const user = isExpired(userToken)
+    if (user) {
       localStorage.removeItem("userToken");
       navigate("/login", { replace: true });
     } else {
